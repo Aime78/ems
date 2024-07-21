@@ -1,5 +1,5 @@
 export async function GET() {
-  Response.json({
+  return Response.json({
     message: 'Hello, World!',
   });
 }
