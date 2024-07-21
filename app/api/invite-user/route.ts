@@ -54,7 +54,7 @@ export async function POST(request: Request) {
       you’ll be on your way.</p>
       <button style="background-color: #18181B; padding: 10px 20px; border-radius: 4px; border: none; color:white">
           <a style="text-decoration: none; color: white; font-weight: 600" href=${
-            process.env.HOST
+            process.env.domain
           }/new-password/${userId}>Verify email</a>
       </button>
       </div>
