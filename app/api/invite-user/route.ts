@@ -7,7 +7,7 @@ export async function POST(request: Request) {
   const body: Partial<IUser> = await request.json();
 
   // Check that all required fields are there
-  const { firstName, lastName, email, role } = body;
+  const { firstName, lastName, email, role, title, department, manager } = body;
   if (!firstName || !lastName) {
     return Response.json({ message: "Names are required" });
   }
@@ -26,6 +26,9 @@ export async function POST(request: Request) {
     lastName,
     email,
     role,
+    title,
+    department,
+    manager,
   });
   try {
     await tempUser.save();

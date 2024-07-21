@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema } from 'mongoose';
 
 export const tempUserSchema: Schema = new mongoose.Schema({
   firstName: {
@@ -14,6 +14,18 @@ export const tempUserSchema: Schema = new mongoose.Schema({
     required: true,
   },
   role: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  department: {
+    type: String,
+    required: true,
+  },
+  manager: {
     type: String,
     required: true,
   },

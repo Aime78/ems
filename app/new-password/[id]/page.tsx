@@ -1,13 +1,5 @@
 'use client';
-import { useRouter } from 'next/navigation';
-import axios from 'axios';
-// import { signIn } from '@/app/auth';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { Input } from '@/components/ui/input';
 import {
   Form,
   FormControl,
@@ -17,32 +9,54 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
-import { signInSchema } from '@/lib/schemaValidations';
+import { zodResolver } from '@hookform/resolvers/zod';
+import axios from 'axios';
+import { useRouter, useParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { Input } from '@/components/ui/input';
 
-const Login = () => {
+const formSchema = z.object({
+  password: z
+    .string({ required_error: 'confirm password is required' })
+    .min(1, 'Password is required')
+    .min(8, 'Password must be more than 8 characters')
+    .max(32, 'Password must be less than 32 characters'),
+  confirmPassword: z
+    .string({ required_error: 'confirm password is required' })
+    .min(1, 'Password is required')
+    .min(8, 'Password must be more than 8 characters')
+    .max(32, 'Password must be less than 32 characters'),
+});
+
+const NewPassword = () => {
   const router = useRouter();
+  const params = useParams();
   const [loading, setLoading] = useState(false);
 
-  // 1. Define your form.
-  const form = useForm<z.infer<typeof signInSchema>>({
-    resolver: zodResolver(signInSchema),
+  //   // 1. Define your form.
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
     defaultValues: {
-      email: '',
       password: '',
+      confirmPassword: '',
     },
   });
 
-  // 2. Define a submit handler.
-  async function onSubmit(values: z.infer<typeof signInSchema>) {
-    // Do something with the form values.
+  //   // 2. Define a submit handler.
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const { id } = params;
     // ✅ This will be type-safe and validated.
-    // console.log(values);
+
     try {
       setLoading(true);
       // const result = await login(values);
       // console.log(result)
-      const response = await axios.post('/api/login', values);
+      const response = await axios.post('/api/new-password', {
+        userId: id,
+        password: values.password,
+      });
       const { data } = response;
       console.log(data);
       router.push('/dashboard');
@@ -56,24 +70,11 @@ const Login = () => {
     <>
       <Card className="w-[350px]">
         <CardHeader>
-          <CardTitle>Sign in to your account</CardTitle>
+          <CardTitle>Set up a new account</CardTitle>
         </CardHeader>
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input placeholder="m@example.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
               <FormField
                 control={form.control}
                 name="password"
@@ -87,9 +88,21 @@ const Login = () => {
                   </FormItem>
                 )}
               />
-
+              <FormField
+                control={form.control}
+                name="confirmPassword"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Confirm password</FormLabel>
+                    <FormControl>
+                      <Input placeholder="confirm password" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <Button type="submit" className="w-full">
-                Sign In
+                Create account
               </Button>
             </form>
           </Form>
@@ -99,4 +112,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default NewPassword;

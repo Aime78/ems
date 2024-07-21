@@ -3,9 +3,12 @@ import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
 
 import { cn } from '@/lib/utils';
-import AuthLayout from '@/layout/AuthLayout';
-import SideBarLayout from '@/layout/SideBarLayout';
-import HeaderLayout from '@/layout/HeaderLayout';
+import AuthLayout from '@/app/AuthLayout';
+import SideBarLayout from '@/app/SideBarLayout';
+import HeaderLayout from '@/app/HeaderLayout';
+
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { isAuthenticated } from '@/actions/auth';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -22,20 +25,28 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const user = true;
-  if (!user) return <AuthLayout>{children}</AuthLayout>;
+
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(' font-sans antialiased', fontSans.variable)}>
-        <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-          <SideBarLayout />
-          <div className="flex flex-col">
-            <HeaderLayout />
-            <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
-              {children}
-            </main>
+      <body className={cn('font-sans', fontSans.variable)}>
+        {children}
+        {/* {isAuthenticated()? (
+          <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+            <div className="hidden border-r bg-muted/40 md:block">
+              <SideBarLayout />
+            </div>
+            <div className="flex flex-col">
+              <HeaderLayout />
+              <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 h-screen">
+                <ScrollArea className="h-[430px] 2xl:h-full">
+                  {children}
+                </ScrollArea>
+              </main>
+            </div>
           </div>
-        </div>
+        ) : (
+          <AuthLayout>{children}</AuthLayout>
+        )} */}
       </body>
     </html>
   );

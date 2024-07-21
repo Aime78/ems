@@ -1,26 +1,224 @@
-import SideBarLayout from '@/layout/SideBarLayout';
-import HeaderLayout from '@/layout/HeaderLayout';
+'use client';
+import SideBarLayout from '@/app/SideBarLayout';
+import HeaderLayout from '@/app/HeaderLayout';
 import { Button } from '@/components/ui/button';
 import RootLayout from '../layout';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import axios from 'axios';
+
+const formSchema = z.object({
+  firstName: z.string().min(2, {
+    message: 'first name must be at least 2 characters.',
+  }),
+
+  lastName: z.string().min(2, {
+    message: 'last name must be at least 2 characters.',
+  }),
+  email: z.string().min(2, {
+    message: 'email must be at least 2 characters.',
+  }),
+  title: z.string().min(2, {
+    message: 'title must be at least 2 characters.',
+  }),
+  department: z.string().min(2, {
+    message: 'department must be at least 2 characters.',
+  }),
+  manager: z.string().min(2, {
+    message: 'manager must be at least 2 characters.',
+  }),
+  role: z.string({
+    required_error: 'Please select a role.',
+  }),
+});
 
 const InviteUser = () => {
+  // 1. Define your form.
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      title: '',
+      department: '',
+      manager: '',
+    },
+  });
+
+  // 2. Define a submit handler.
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    try {
+      const response = await axios.post('api/invite-user', values);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+    // console.log(values);
+  }
   return (
     <>
-      <div className="flex items-center">
-        <h1 className="text-lg font-semibold md:text-2xl">Inventory</h1>
-      </div>
-      <div
-        className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm"
-        x-chunk="dashboard-02-chunk-1"
-      >
-        <div className="flex flex-col items-center gap-1 text-center">
-          <h3 className="text-2xl font-bold tracking-tight">
-            You have no products
-          </h3>
-          <p className="text-sm text-muted-foreground">
-            You can start selling as soon as you add a product.
+      <div className="">
+        <div className="">
+          <h1 className="text-lg font-semibold md:text-2xl">Invite user</h1>
+          <p className="font-regular text-sm my-2">
+            These are the main informations we need from the user you are going
+            to invite
           </p>
-          <Button className="mt-4">Add Product</Button>
+        </div>
+        <div className='rounded-lg border border-dashed shadow-sm" x-chunk="dashboard-02-chunk-1 md:my-12 md:py-4'>
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-4 md:w-[70%] xl:60%"
+            >
+              <FormField
+                control={form.control}
+                name="firstName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>First Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="John" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                    <FormDescription>
+                      This is your public display name.
+                    </FormDescription>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="lastName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Last Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Doe" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input placeholder="m@example.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                    <FormDescription>
+                      This is the email that will need to be verified.
+                    </FormDescription>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="title"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Title</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Junior" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="department"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Department</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Service centre" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="manager"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Manager</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Joe Doe" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="role"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Role</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger className="w-full my-6">
+                          <SelectValue placeholder="Select the role of the user to invite" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="admin">Administrator</SelectItem>
+                        <SelectItem value="employee">Employee</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormDescription>
+                      The role will determine the access level the user will get{' '}
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              {/* <Select>
+                <SelectTrigger className="w-full my-6">
+                  <SelectValue placeholder="Select the role of the user to invite" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="admin">Administrator</SelectItem>
+                  <SelectItem value="employee">Employee</SelectItem>
+                </SelectContent>
+              </Select> */}
+              <div className="mt-6">
+                <Button type="submit" className="w-32">
+                  Send Invite
+                </Button>
+              </div>
+            </form>
+          </Form>
         </div>
       </div>
     </>

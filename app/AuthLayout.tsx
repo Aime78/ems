@@ -20,15 +20,13 @@ export default function AuthLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          'min-h-screen bg-red-700 font-sans antialiased flex justify-center items-center',
-          fontSans.variable
-        )}
-      >
-        {children}
-      </body>
-    </html>
+    <div
+      className={cn(
+        'min-h-screen font-sans antialiased flex justify-center items-center',
+        fontSans.variable
+      )}
+    >
+      {children}
+    </div>
   );
 }

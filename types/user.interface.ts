@@ -4,23 +4,19 @@ export interface IUser {
   email: string;
   password: string;
   role: string;
+  title: string;
+  department: string;
+  hireDate: string;
+  manager: string;
 
-  contactInfo: {
-    phone: string;
-    address: {
-      street: string;
-      city: string;
-      state: string;
-      postalCode: string;
-      country: string;
-    };
+  phone: string;
+  address: {
+    street: string;
+    city: string;
+    state: string;
+    postalCode: string;
+    country: string;
 
-    jobInfo: {
-      title: string;
-      department: string;
-      hireDate: string;
-      manager: string;
-    };
     skills: string[];
   };
 }
