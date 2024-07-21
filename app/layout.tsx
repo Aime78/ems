@@ -30,23 +30,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={cn('font-sans', fontSans.variable)}>
         {children}
-        {/* {isAuthenticated()? (
-          <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-            <div className="hidden border-r bg-muted/40 md:block">
-              <SideBarLayout />
-            </div>
-            <div className="flex flex-col">
-              <HeaderLayout />
-              <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 h-screen">
-                <ScrollArea className="h-[430px] 2xl:h-full">
-                  {children}
-                </ScrollArea>
-              </main>
-            </div>
-          </div>
-        ) : (
-          <AuthLayout>{children}</AuthLayout>
-        )} */}
       </body>
     </html>
   );
