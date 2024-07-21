@@ -1,5 +1,8 @@
+import dbConnect from "@/db/connectionDb";
+import { User } from "@/model/user.model";
+
 export async function GET() {
-  return Response.json({
-    message: 'Hello, World!',
-  });
+    await dbConnect();
+    const user = await User.find();
+    return Response.json(user)
 }
