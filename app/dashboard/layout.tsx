@@ -1,12 +1,11 @@
 import AppLayout from '../AppLayout';
-import UserLayout from '../UserLayout';
 
 const DashboardLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  return (false? <AppLayout>{children}</AppLayout> : <UserLayout>{children}</UserLayout>);
+  return <AppLayout>{children}</AppLayout>;
 };
 
 export default DashboardLayout;

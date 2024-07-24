@@ -52,13 +52,16 @@ export async function POST(request: Request) {
       });
 
       // Set the token as an cookie
-      response.headers.append('Set-Cookie', `token=${token}; Path=/; Max-Age=86400; SameSite=strict; Secure`);
-     
+      response.headers.append(
+        'Set-Cookie',
+        `token=${token}; Path=/; Max-Age=86400; SameSite=strict;`
+      );
+
       // const tokenFromCookie = cookies().get('token')?.value;
-     
+
       // const decodedToken:any = jwt.verify(tokenFromCookie as string, process.env.TOKEN_SECRET!);
       // console.log(decodedToken);
-     
+
       return response;
     }
   } catch (error) {

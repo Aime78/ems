@@ -3,12 +3,6 @@ import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
 
 import { cn } from '@/lib/utils';
-import AuthLayout from '@/app/AuthLayout';
-import SideBarLayout from '@/app/SideBarLayout';
-import HeaderLayout from '@/app/HeaderLayout';
-
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { isAuthenticated } from '@/actions/auth';
 
 const fontSans = FontSans({
   subsets: ['latin'],

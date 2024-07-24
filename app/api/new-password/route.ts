@@ -30,7 +30,16 @@ export async function POST(request: Request) {
             title: tempUser?.title,
             department: tempUser?.department,
             manager: tempUser?.manager,
-            password: hashedPassword
+            phone: null,
+            password: hashedPassword,
+            skills: [],
+            address: {
+                street: null,
+                city: null,
+                state: null,
+                postalCode: null,
+                country: null,
+            }
         })
 
         await user.save();

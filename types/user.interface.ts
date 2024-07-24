@@ -1,4 +1,5 @@
 export interface IUser {
+  _id?: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -6,17 +7,15 @@ export interface IUser {
   role: string;
   title: string;
   department: string;
-  hireDate: string;
   manager: string;
 
-  phone: string;
+  phone: string| null;
   address: {
-    street: string;
-    city: string;
-    state: string;
-    postalCode: string;
-    country: string;
-
-    skills: string[];
+    street: string | null;
+    city: string | null;
+    state: string | null;
+    postalCode: string | null;
+    country: string | null;
   };
+  skills: string[] ;
 }
