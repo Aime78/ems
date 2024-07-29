@@ -4,7 +4,6 @@ import AppLayout from '../AppLayout';
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -33,7 +32,7 @@ const Attendance = () => {
   }, []);
 
   return (
-    <AppLayout>
+    <>
       <h1 className="text-lg font-semibold md:text-xl ml-2 mb-4">Attendance</h1>
       {loading ? (
         <>
@@ -77,7 +76,7 @@ const Attendance = () => {
           </TableBody>
         </Table>
       )}
-    </AppLayout>
+    </>
   );
 };
 

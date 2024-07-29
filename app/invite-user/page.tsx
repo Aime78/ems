@@ -1,8 +1,5 @@
 'use client';
-import SideBarLayout from '@/app/SideBarLayout';
-import HeaderLayout from '@/app/HeaderLayout';
 import { Button } from '@/components/ui/button';
-import RootLayout from '../layout';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -24,6 +21,8 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import axios from 'axios';
+import { Loader2 } from 'lucide-react';
+import { useState } from 'react';
 
 const formSchema = z.object({
   firstName: z.string().min(2, {
@@ -51,6 +50,7 @@ const formSchema = z.object({
 });
 
 const InviteUser = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -68,13 +68,14 @@ const InviteUser = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
+    setIsSubmitting(true);
     try {
       const response = await axios.post('api/invite-user', values);
-      console.log(response);
+      setIsSubmitting(false);
     } catch (error) {
-      console.log(error);
+      setIsSubmitting(false);
     }
-    // console.log(values);
+    form.reset();
   }
   return (
     <>
@@ -212,11 +213,18 @@ const InviteUser = () => {
                   <SelectItem value="employee">Employee</SelectItem>
                 </SelectContent>
               </Select> */}
-              <div className="mt-6">
-                <Button type="submit" className="w-32">
-                  Send Invite
+              {isSubmitting ? (
+                <Button disabled className="w-32">
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Loading
                 </Button>
-              </div>
+              ) : (
+                <div className="mt-6">
+                  <Button type="submit" className="w-32">
+                    Send Invite
+                  </Button>
+                </div>
+              )}
             </form>
           </Form>
         </div>

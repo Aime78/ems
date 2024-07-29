@@ -1,9 +1,7 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-// import { signIn } from '@/app/auth';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -19,10 +17,11 @@ import {
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { signInSchema } from '@/lib/schemaValidations';
+import { Loader2 } from 'lucide-react';
 
 const Login = () => {
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof signInSchema>>({
@@ -38,19 +37,22 @@ const Login = () => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     // console.log(values);
+    setIsSubmitting(true);
     try {
-      setLoading(true);
+  
       // const result = await login(values);
       // console.log(result)
       const response = await axios.post('/api/login', values);
       const { data } = response;
-      console.log(data);
+      setIsSubmitting(false);
       router.push('/dashboard');
     } catch (error: any) {
+      setIsSubmitting(false);
       console.log('login failed', error.message);
     } finally {
-      setLoading(false);
+      setIsSubmitting(false);
     }
+    form.reset();
   }
   return (
     <>
@@ -87,10 +89,16 @@ const Login = () => {
                   </FormItem>
                 )}
               />
-
-              <Button type="submit" className="w-full">
-                Sign In
-              </Button>
+              {isSubmitting ? (
+                <Button disabled className="w-full">
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Loading
+                </Button>
+              ) : (
+                <Button type="submit" className="w-full">
+                  Sign In
+                </Button>
+              )}
             </form>
           </Form>
         </CardContent>
