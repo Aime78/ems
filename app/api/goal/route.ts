@@ -1,47 +1,42 @@
 import dbConnect from '@/db/connectionDb';
 import { getDataFromToken } from '@/lib/getDataFromToken';
-import { Leave } from '@/model/leave.model';
+import { Goal } from '@/model/goal.model';
 import { User } from '@/model/user.model';
 
 export async function POST(request: Request) {
   const userDecoded = getDataFromToken(request);
-  const { startDate, endDate, reason } = await request.json();
+  const { title, description } = await request.json();
 
   // Find the user by their ID in the database
   await dbConnect();
   const userDoc = await User.findOne({ _id: userDecoded?.id });
   try {
-    const leave = new Leave({
-      user: userDoc?._id,
-      startDate: startDate,
-      endDate: endDate,
-      status: 'pending',
-      requestedAt: new Date(),
-      approvedBy: null,
-      reason,
+    const goal = new Goal({
+      createdBy: userDoc?._id,
+      title: title,
+      description: description,
     });
-    await leave.save();
+    await goal.save();
     return Response.json({
-      data: leave,
+      data: goal,
       success: true,
       status: 200,
     });
   } catch (error) {
-    throw new Error('Leave not created');
+    throw new Error('Goal not created');
   }
 }
 
 export async function GET(request: Request) {
-
   await dbConnect();
   try {
-    const leaveDoc = await Leave.find({}).populate('user', 'firstName lastName');
+    const goalDoc = await Goal.find({}).populate('createdBy', 'firstName lastName');
     return Response.json({
-      data: leaveDoc,
+      data: goalDoc,
       success: true,
       status: 200,
-    })
+    });
   } catch (error) {
-    throw new Error('Leave not found');
+    throw new Error('Goal not found');
   }
 }
