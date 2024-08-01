@@ -116,8 +116,8 @@ const AddressInfo = () => {
           //   onSubmit={personalInfoform.handleSubmit(onSubmitPersonalInfo)}
           className="space-y-0 md:w-[70%] xl:60%"
         >
-          <div className="flex border-2 border-blue-500 ">
-            <p className="text-sm mt-10 mb-4 block border-2">
+          <div className="flex">
+            <p className="text-sm mt-10 mb-4 block">
               Street
               {!editInfo && (
                 <span className="ml-[80px]">
@@ -126,7 +126,7 @@ const AddressInfo = () => {
               )}
             </p>
             {editInfo && (
-              <div className="border-2 self-end mb-2 ml-[80px]">
+              <div className="self-end mb-2 ml-[80px]">
                 <FormField
                   control={addressInfoform.control}
                   name="street"
@@ -142,15 +142,15 @@ const AddressInfo = () => {
               </div>
             )}
           </div>
-          <div className="flex border-2 ">
-            <p className="text-sm mt-10 mb-4 block border-2">
+          <div className="flex ">
+            <p className="text-sm mt-10 mb-4 block">
               City
               {!editInfo && (
                 <span className="ml-[80px]">{user?.address?.city || '-'}</span>
               )}
             </p>
             {editInfo && (
-              <div className="border-2 self-end mb-2 ml-[80px]">
+              <div className="self-end mb-2 ml-[80px]">
                 <FormField
                   control={addressInfoform.control}
                   name="city"
@@ -166,8 +166,8 @@ const AddressInfo = () => {
               </div>
             )}
           </div>
-          <div className="flex border-2 ">
-            <p className="text-sm mt-10 mb-4 block border-2">
+          <div className="flex ">
+            <p className="text-sm mt-10 mb-4 block">
               Postal Code
               {!editInfo && (
                 <span className="ml-[80px]">
@@ -176,7 +176,7 @@ const AddressInfo = () => {
               )}
             </p>
             {editInfo && (
-              <div className="border-2 self-end mb-2 ml-[80px]">
+              <div className="self-end mb-2 ml-[80px]">
                 <FormField
                   control={addressInfoform.control}
                   name="postalCode"
@@ -192,15 +192,15 @@ const AddressInfo = () => {
               </div>
             )}
           </div>
-          <div className="flex border-2 ">
-            <p className="text-sm mt-10 mb-4 block border-2">
+          <div className="flex ">
+            <p className="text-sm mt-10 mb-4 block">
               State
               {!editInfo && (
                 <span className="ml-[80px]">{user?.address?.state || '-'}</span>
               )}
             </p>
             {editInfo && (
-              <div className="border-2 self-end mb-2 ml-[80px]">
+              <div className="self-end mb-2 ml-[80px]">
                 <FormField
                   control={addressInfoform.control}
                   name="state"
@@ -216,8 +216,8 @@ const AddressInfo = () => {
               </div>
             )}
           </div>
-          <div className="flex border-2 ">
-            <p className="text-sm mt-10 mb-4 block border-2">
+          <div className="flex ">
+            <p className="text-sm mt-10 mb-4 block">
               Country
               {!editInfo && (
                 <span className="ml-[80px]">
@@ -226,7 +226,7 @@ const AddressInfo = () => {
               )}
             </p>
             {editInfo && (
-              <div className="border-2 self-end mb-2 ml-[80px]">
+              <div className="self-end mb-2 ml-[80px]">
                 <FormField
                   control={addressInfoform.control}
                   name="country"

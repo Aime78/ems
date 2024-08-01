@@ -129,8 +129,8 @@ const PersonalInfo = () => {
           //   onSubmit={personalInfoform.handleSubmit(onSubmitPersonalInfo)}
           className="space-y-0 md:w-[70%] xl:60%"
         >
-          <div className="flex border-2 border-blue-500 ">
-            <p className="text-sm mt-10 mb-4 block border-2">
+          <div className="flex">
+            <p className="text-sm mt-10 mb-4 block ">
               Name
               {!editPersonalInfo && (
                 <span className="ml-[80px]">
@@ -139,7 +139,7 @@ const PersonalInfo = () => {
               )}
             </p>
             {editPersonalInfo && (
-              <div className="border-2 self-end mb-2 ml-[80px]">
+              <div className=" self-end mb-2 ml-[80px]">
                 <FormField
                   control={personalInfoform.control}
                   name="name"
@@ -155,15 +155,15 @@ const PersonalInfo = () => {
               </div>
             )}
           </div>
-          <div className="flex border-2 ">
-            <p className="text-sm mt-10 mb-4 block border-2">
+          <div className="flex  ">
+            <p className="text-sm mt-10 mb-4 block ">
               Email
               {!editPersonalInfo && (
                 <span className="ml-[80px]">{user?.email}</span>
               )}
             </p>
             {editPersonalInfo && (
-              <div className="border-2 self-end mb-2 ml-[80px]">
+              <div className=" self-end mb-2 ml-[80px]">
                 <FormField
                   control={personalInfoform.control}
                   name="email"
@@ -179,15 +179,15 @@ const PersonalInfo = () => {
               </div>
             )}
           </div>
-          <div className="flex border-2 ">
-            <p className="text-sm mt-10 mb-4 block border-2">
+          <div className="flex  ">
+            <p className="text-sm mt-10 mb-4 block ">
               Phone
               {!editPersonalInfo && (
                 <span className="ml-[80px]">{user?.phone || '-'}</span>
               )}
             </p>
             {editPersonalInfo && (
-              <div className="border-2 self-end mb-2 ml-[80px]">
+              <div className=" self-end mb-2 ml-[80px]">
                 <FormField
                   control={personalInfoform.control}
                   name="phone"
@@ -203,15 +203,15 @@ const PersonalInfo = () => {
               </div>
             )}
           </div>
-          <div className="flex border-2 ">
-            <p className="text-sm mt-10 mb-4 block border-2">
+          <div className="flex  ">
+            <p className="text-sm mt-10 mb-4 block ">
               Role
               {!editPersonalInfo && (
                 <span className="ml-[80px]">{user?.role}</span>
               )}
             </p>
             {editPersonalInfo && (
-              <div className="border-2 self-end mb-2 ml-[80px]">
+              <div className=" self-end mb-2 ml-[80px]">
                 <FormField
                   control={personalInfoform.control}
                   name="role"
@@ -227,8 +227,8 @@ const PersonalInfo = () => {
               </div>
             )}
           </div>
-          <div className="flex border-2 ">
-            <p className="text-sm mt-10 mb-4 block border-2">
+          <div className="flex  ">
+            <p className="text-sm mt-10 mb-4 block ">
               Skills
               {!editPersonalInfo && (
                 <span className="ml-[80px]">
@@ -242,7 +242,7 @@ const PersonalInfo = () => {
               )}
             </p>
             {editPersonalInfo && (
-              <div className="border-2 self-end mb-2 ml-[80px]">
+              <div className=" self-end mb-2 ml-[80px]">
                 <FormField
                   control={personalInfoform.control}
                   name="skills"

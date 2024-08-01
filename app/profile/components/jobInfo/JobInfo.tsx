@@ -104,8 +104,8 @@ const JobInfo = () => {
             onSubmit={jobInfoform.handleSubmit(onSubmitInfo)}
           className="space-y-0 md:w-[70%] xl:60%"
         >
-          <div className="flex border-2 border-blue-500 ">
-            <p className="text-sm mt-10 mb-4 block border-2">
+          <div className="flex">
+            <p className="text-sm mt-10 mb-4 block">
               Title
               {!editInfo && (
                 <span className="ml-[80px]">{user?.title || '-'}</span>
@@ -128,15 +128,15 @@ const JobInfo = () => {
               </div>
             )}
           </div>
-          <div className="flex border-2 ">
-            <p className="text-sm mt-10 mb-4 block border-2">
+          <div className="flex ">
+            <p className="text-sm mt-10 mb-4 block">
               Department
               {!editInfo && (
                 <span className="ml-[80px]">{user?.department || '-'}</span>
               )}
             </p>
             {editInfo && (
-              <div className="border-2 self-end mb-2 ml-[80px]">
+              <div className="self-end mb-2 ml-[80px]">
                 <FormField
                   control={jobInfoform.control}
                   name="department"
@@ -152,15 +152,15 @@ const JobInfo = () => {
               </div>
             )}
           </div>
-          <div className="flex border-2 ">
-            <p className="text-sm mt-10 mb-4 block border-2">
+          <div className="flex ">
+            <p className="text-sm mt-10 mb-4 block">
               Manager
               {!editInfo && (
                 <span className="ml-[80px]">{user?.manager || '-'}</span>
               )}
             </p>
             {editInfo && (
-              <div className="border-2 self-end mb-2 ml-[80px]">
+              <div className="self-end mb-2 ml-[80px]">
                 <FormField
                   control={jobInfoform.control}
                   name="manager"

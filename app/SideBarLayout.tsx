@@ -2,24 +2,20 @@
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
   Home,
-  LineChart,
   Infinity,
   Users,
   Send,
   Timer,
   TimerOff,
   Target,
-  Axis3D,
   Calculator,
   List,
   RefreshCw,
-  CalendarCheck2,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 const SideBarLayout = () => {
   const pathname = usePathname();
-  console.log(pathname);
   const isActive = (path: string) => {
     return pathname === path;
   };
@@ -36,9 +32,9 @@ const SideBarLayout = () => {
         <div className="flex-1">
           <ScrollArea className="h-[450px] 2xl:h-full">
             <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-              <h1 className="text-lg font-semibold 2xl:text-xl px-3 mt-2">
+              {/* <h1 className="text-lg font-semibold 2xl:text-xl px-3 mt-2">
                 Overview
-              </h1>
+              </h1> */}
               <Link
                 href="/dashboard"
                 className={`${
@@ -66,10 +62,10 @@ const SideBarLayout = () => {
                 <Send className="h-4 w-4" />
                 Invite user{' '}
               </Link>
-
+{/* 
               <h1 className="text-lg font-semibold 2xl:text-xl px-3 mt-4 mb-2 ">
                 Employee Management
-              </h1>
+              </h1> */}
               <Link
                 href="/attendance"
                 className={`${
@@ -89,7 +85,7 @@ const SideBarLayout = () => {
                 Leave tracking
               </Link>
               <Link
-                href="#"
+                href="/goals"
                 className={`${
                   isActive('/goals') ? 'bg-muted text-primary' : ''
                 } flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary`}
@@ -97,7 +93,7 @@ const SideBarLayout = () => {
                 <Target className="h-4 w-4" />
                 Goals and objectives
               </Link>
-              <Link
+              {/* <Link
                 href="/performance"
                 className={`${
                   isActive('/performance') ? 'bg-muted text-primary' : ''
@@ -105,7 +101,7 @@ const SideBarLayout = () => {
               >
                 <Axis3D className="h-4 w-4" />
                 Performance reviews
-              </Link>
+              </Link> */}
               <Link
                 href="/salary"
                 className={`${
@@ -115,11 +111,11 @@ const SideBarLayout = () => {
                 <Calculator className="h-4 w-4" />
                 Salary calculation
               </Link>
-              <h1 className="text-lg font-semibold 2xl:text-xl px-3 mt-4 mb-2">
+              {/* <h1 className="text-lg font-semibold 2xl:text-xl px-3 mt-4 mb-2">
                 Project Management
-              </h1>
+              </h1> */}
               <Link
-                href="#"
+                href="task"
                 className={`${
                   isActive('/task-assignment') ? 'bg-muted text-primary' : ''
                 } flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary`}
@@ -128,15 +124,15 @@ const SideBarLayout = () => {
                 Task assignment
               </Link>
               <Link
-                href="#"
+                href="/progress"
                 className={`${
-                  isActive('/progress-tracking') ? 'bg-muted text-primary' : ''
+                  isActive('/progress') ? 'bg-muted text-primary' : ''
                 } flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary`}
               >
                 <RefreshCw className="h-4 w-4" />
                 Progress tracking
               </Link>
-              <Link
+              {/* <Link
                 href="#"
                 className={`${
                   isActive('/employee-reports') ? 'bg-muted text-primary' : ''
@@ -144,8 +140,8 @@ const SideBarLayout = () => {
               >
                 <CalendarCheck2 className="h-4 w-4" />
                 Employee reports
-              </Link>
-              <Link
+              </Link> */}
+              {/* <Link
                 href="#"
                 className={`${
                   isActive('/analytics') ? 'bg-muted text-primary' : ''
@@ -153,7 +149,7 @@ const SideBarLayout = () => {
               >
                 <LineChart className="h-4 w-4" />
                 Analytics
-              </Link>
+              </Link> */}
             </nav>
           </ScrollArea>
         </div>

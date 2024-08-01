@@ -21,7 +21,7 @@ export async function POST(request: Request) {
       assignedTo: assignedTo || null,
       createdAt: new Date(),
     });
-    //   await task.save();
+      await task.save();
     return Response.json({
       data: task,
       success: true,
@@ -36,7 +36,7 @@ export async function GET(request: Request) {
 
     await dbConnect();
     try {
-      const taskDoc = await Task.find({}).populate('user', 'firstName lastName');
+      const taskDoc = await Task.find({}).populate('createdBy', 'firstName lastName');
       return Response.json({
         data: taskDoc,
         success: true,
