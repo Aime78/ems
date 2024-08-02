@@ -18,6 +18,7 @@ const Attendance = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = 'Attendance'
     const getAttendance = async () => {
       try {
         const response = await axios.get('/api/attendance');

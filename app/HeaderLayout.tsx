@@ -1,3 +1,4 @@
+"use client";
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -9,15 +10,11 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import {
-  Bell,
   CircleUser,
   Home,
   LineChart,
   Menu,
-  Package,
-  Package2,
   Infinity,
-  ShoppingCart,
   Users,
   Send,
   Timer,
@@ -28,7 +25,6 @@ import {
   List,
   RefreshCw,
   CalendarCheck2,
-  Settings,
   LifeBuoy,
   LogOut,
   User,
@@ -40,8 +36,18 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import Link from 'next/link';
-
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 const HeaderLayout = () => {
+  const router= useRouter();
+  const logout = async () => {
+    try {
+      const response = await axios.get('/api/logout');
+      router.push('/login');
+    } catch (error) {
+      throw new Error(error as string);
+    }
+  };
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
       <Sheet>
@@ -235,7 +241,7 @@ const HeaderLayout = () => {
             <span>Support</span>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
+          <DropdownMenuItem onClick={() => logout()}>
             <LogOut className="mr-2 h-4 w-4" />
             <span>Log out</span>
           </DropdownMenuItem>

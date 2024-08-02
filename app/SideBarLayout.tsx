@@ -62,7 +62,7 @@ const SideBarLayout = () => {
                 <Send className="h-4 w-4" />
                 Invite user{' '}
               </Link>
-{/* 
+              {/* 
               <h1 className="text-lg font-semibold 2xl:text-xl px-3 mt-4 mb-2 ">
                 Employee Management
               </h1> */}
@@ -123,7 +123,7 @@ const SideBarLayout = () => {
                 <List className="h-4 w-4" />
                 Task assignment
               </Link>
-              <Link
+              {/* <Link
                 href="/progress"
                 className={`${
                   isActive('/progress') ? 'bg-muted text-primary' : ''
@@ -131,7 +131,7 @@ const SideBarLayout = () => {
               >
                 <RefreshCw className="h-4 w-4" />
                 Progress tracking
-              </Link>
+              </Link> */}
               {/* <Link
                 href="#"
                 className={`${

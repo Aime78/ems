@@ -19,6 +19,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = 'Dashboard'
     const getData = async () => {
       try {
         const response = await axios.get('/api/productivity-data');

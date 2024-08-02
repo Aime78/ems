@@ -10,6 +10,7 @@ const Goals = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = 'Goals';
     const getGoals = async () => {
       try {
         const response = await axios.get('/api/goal');

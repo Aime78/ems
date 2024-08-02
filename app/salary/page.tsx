@@ -16,6 +16,7 @@ const Salary = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = 'Salary';
     const getSalaries = async () => {
       try {
         const response = await axios.get('/api/salary');

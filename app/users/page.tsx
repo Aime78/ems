@@ -19,6 +19,7 @@ const Users = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = 'Users';
     const getUsers = async () => {
       try {
         const response = await axios.get('/api/users');

@@ -20,6 +20,7 @@ const Leave = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = 'Leave';
     const getLeave = async () => {
       try {
         const response = await axios.get('/api/leave');

@@ -22,7 +22,7 @@ import {
 } from '@/components/ui/select';
 import axios from 'axios';
 import { Loader2 } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const formSchema = z.object({
   firstName: z.string().min(2, {
@@ -64,6 +64,10 @@ const InviteUser = () => {
     },
   });
 
+  useEffect(() => {
+    document.title = 'Invite user'
+  }, []);
+
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
@@ -87,7 +91,7 @@ const InviteUser = () => {
             to invite
           </p>
         </div>
-        <div className='rounded-lg border border-dashed shadow-sm" x-chunk="dashboard-02-chunk-1 md:my-12 md:py-4'>
+        <div className='rounded-lg shadow-sm" x-chunk="dashboard-02-chunk-1 md:my-12 md:py-4'>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}

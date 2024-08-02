@@ -18,6 +18,7 @@ const Task = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = 'Task';
     const getTasks = async () => {
       try {
         const response = await axios.get('/api/task');

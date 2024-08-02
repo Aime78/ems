@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
-
+import Head from 'next/head';
 import { cn } from '@/lib/utils';
 
 const fontSans = FontSans({
@@ -19,12 +19,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn('font-sans', fontSans.variable)}>
-        {children}
-      </body>
+      <Head>
+        <link rel="icon" href="/logo.svg" />
+      </Head>
+      <body className={cn('font-sans', fontSans.variable)}>{children}</body>
     </html>
   );
 }

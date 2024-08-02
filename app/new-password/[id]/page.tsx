@@ -35,6 +35,10 @@ const NewPassword = () => {
   const params = useParams();
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    document.title = 'New Password';
+  }, []);
+  
   //   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
