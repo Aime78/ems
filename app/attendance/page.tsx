@@ -23,9 +23,8 @@ const Attendance = () => {
         const response = await axios.get('/api/attendance');
         setAttendance(response.data.data);
         setLoading(false);
-        console.log(response.data.data);
       } catch (error) {
-        console.log(error);
+        throw new Error(error as string);
       }
     };
     getAttendance();
@@ -41,7 +40,6 @@ const Attendance = () => {
         </>
       ) : (
         <Table>
-
           <TableHeader>
             <TableRow>
               <TableHead>Name</TableHead>
@@ -59,14 +57,9 @@ const Attendance = () => {
               <TableRow key={attendance?._id}>
                 <></>
                 <TableCell>{`${attendance?.user?.firstName} ${attendance?.user?.lastName}`}</TableCell>
-                <TableCell>{getTime(attendance?.date) }</TableCell>
-                <TableCell>
-                  
-                  {getTime(attendance?.clockIn) }
-                </TableCell>{' '}
-                <TableCell>
-                 {getTime(attendance?.clockOut) }
-                </TableCell>
+                <TableCell>{getTime(attendance?.date)}</TableCell>
+                <TableCell>{getTime(attendance?.clockIn)}</TableCell>{' '}
+                <TableCell>{getTime(attendance?.clockOut)}</TableCell>
                 <TableCell>{attendance?.dailyHoursWorked}</TableCell>
                 <TableCell>{attendance?.weeklyHoursWorked}</TableCell>
                 <TableCell>{attendance?.overtimeHours}</TableCell>

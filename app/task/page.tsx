@@ -22,11 +22,10 @@ const Task = () => {
       try {
         const response = await axios.get('/api/task');
         setTasks(response.data.data);
-        console.log(response.data.data);
+
         setLoading(false);
-        console.log(response.data.data);
       } catch (error) {
-        console.log(error);
+        throw new Error(error as string);
       }
     };
     getTasks();
@@ -42,7 +41,7 @@ const Task = () => {
       ) : (
         <Table>
           <TableHeader>
-            <TableRow className='text-sm'>
+            <TableRow className="text-sm">
               <TableHead>Title</TableHead>
               <TableHead>Description</TableHead>
               <TableHead>Status</TableHead>
@@ -55,7 +54,9 @@ const Task = () => {
           <TableBody>
             {tasks.map((task: ITask) => (
               <TableRow key={task?._id}>
-                <TableCell className="max-w-[300px] truncate">{task?.title}</TableCell>
+                <TableCell className="max-w-[300px] truncate">
+                  {task?.title}
+                </TableCell>
                 <TableCell className="max-w-[100px] truncate">
                   {task?.description}
                 </TableCell>

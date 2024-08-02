@@ -17,8 +17,6 @@ export async function POST(request: Request) {
   if (!password) {
     return Response.json({ message: 'Password is required' });
   }
-
-  console.log(body);
   await dbConnect();
 
   try {
@@ -56,11 +54,12 @@ export async function POST(request: Request) {
         'Set-Cookie',
         `token=${token}; Path=/; Max-Age=86400; SameSite=strict;`
       );
-
-      // const tokenFromCookie = cookies().get('token')?.value;
-
-      // const decodedToken:any = jwt.verify(tokenFromCookie as string, process.env.TOKEN_SECRET!);
-      // console.log(decodedToken);
+      response.headers.append(
+        'Set-Cookie',
+        `user=${JSON.stringify(
+          tokenData
+        )}; Path=/; Max-Age=86400; SameSite=strict;`
+      );
 
       return response;
     }

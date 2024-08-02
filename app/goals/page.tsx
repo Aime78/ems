@@ -5,7 +5,6 @@ import { IGoal } from '@/types/goal.interface';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-
 const Goals = () => {
   const [goals, setGoals] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,9 +15,8 @@ const Goals = () => {
         const response = await axios.get('/api/goal');
         setGoals(response.data.data);
         setLoading(false);
-        console.log(response.data.data);
       } catch (error) {
-        console.log(error);
+        throw new Error(error as string);
       }
     };
     getGoals();
@@ -28,7 +26,7 @@ const Goals = () => {
     <div>
       <h1 className="text-lg font-semibold md:text-2xl mb-4">Goals</h1>
       {loading ? (
-        <div className='flex gap-4'>
+        <div className="flex gap-4">
           <Skeleton className="w-1/3 h-[200px]" />
           <Skeleton className="w-1/3 h-[200px]" />
           <Skeleton className="w-1/3 h-[200px]" />

@@ -65,11 +65,10 @@ const PersonalInfo = () => {
       setEditPersonalInfo(false);
       setUser({ ...user, ...updateInfo });
     } catch (error) {
-      console.log(error);
+
       setIsSubmitting(false);
       setEditPersonalInfo(false);
     }
-    console.log(values);
   };
 
   // 1. Define your personal information form.

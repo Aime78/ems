@@ -48,14 +48,6 @@ export async function POST(request: Request) {
         message: 'Login successful',
         success: true,
       });
-
-      // Set the token as an cookie
-    //   response.headers.append('Set-Cookie', `token=${token}; Path=/; Max-Age=86400; SameSite=strict; Secure`);
-     
-      // const tokenFromCookie = cookies().get('token')?.value;
-     
-      // const decodedToken:any = jwt.verify(tokenFromCookie as string, process.env.TOKEN_SECRET!);
-      // console.log(decodedToken);
      
       return response;
     }

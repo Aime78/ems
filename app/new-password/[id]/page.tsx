@@ -52,16 +52,14 @@ const NewPassword = () => {
     try {
       setLoading(true);
       // const result = await login(values);
-      // console.log(result)
       const response = await axios.post('/api/new-password', {
         userId: id,
         password: values.password,
       });
       const { data } = response;
-      console.log(data);
       router.push('/dashboard');
     } catch (error: any) {
-      console.log('login failed', error.message);
+      throw new Error(error as string);
     } finally {
       setLoading(false);
     }

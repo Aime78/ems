@@ -1,39 +1,36 @@
-import nodemailer from 'nodemailer'
+import nodemailer from 'nodemailer';
 interface IEmail {
-    to: string;
-    // name: string;
-    subject: string;
-    body: string;
+  to: string;
+  // name: string;
+  subject: string;
+  body: string;
 }
-export async function sendMail({to, subject, body}: IEmail){
-    const {SMTP_EMAIL, SMTP_PASSWORD} = process.env
+export async function sendMail({ to, subject, body }: IEmail) {
+  const { SMTP_EMAIL, SMTP_PASSWORD } = process.env;
 
-    const transport = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: SMTP_EMAIL,
-            pass: SMTP_PASSWORD
-        }
-    
-    })
+  const transport = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: SMTP_EMAIL,
+      pass: SMTP_PASSWORD,
+    },
+  });
 
-    try {
-        const testResult =await transport.verify()
-        console.log(testResult)
-    } catch (error) {
-        console.log(error)
-        return 
-    }
+  try {
+    const testResult = await transport.verify();
+  } catch (error) {
+    throw new Error(error as string);
+    return;
+  }
 
-    try {
-        const sendResult = await transport.sendMail({
-            from: SMTP_EMAIL,
-            to,
-            subject,
-            html: body
-        })
-        console.log(sendResult);
-    } catch (error) {
-        console.log(error)
-    }
+  try {
+    const sendResult = await transport.sendMail({
+      from: SMTP_EMAIL,
+      to,
+      subject,
+      html: body,
+    });
+  } catch (error) {
+    throw new Error(error as string);
+  }
 }

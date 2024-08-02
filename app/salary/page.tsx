@@ -1,33 +1,32 @@
-"use client";
-import axios from "axios";
-import { useEffect, useState } from "react";
+'use client';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-  } from '@/components/ui/table';
-  import { Skeleton } from '@/components/ui/skeleton';
-import { ISalary } from "@/types/salary.interface";
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Skeleton } from '@/components/ui/skeleton';
+import { ISalary } from '@/types/salary.interface';
 const Salary = () => {
-    const [salaries, setSalaries] = useState([])
-    const [loading, setLoading] = useState(true)
+  const [salaries, setSalaries] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const getSalaries = async () => {
-            try {
-                const response = await axios.get('/api/salary')
-                setSalaries(response.data.data)
-                setLoading(false)
-                console.log(response.data.data)
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        getSalaries()
-    },[])
+  useEffect(() => {
+    const getSalaries = async () => {
+      try {
+        const response = await axios.get('/api/salary');
+        setSalaries(response.data.data);
+        setLoading(false);
+      } catch (error) {
+        throw new Error(error as string);
+      }
+    };
+    getSalaries();
+  }, []);
   return (
     <>
       <h1 className="text-lg font-semibold md:text-xl ml-2 mb-4">Salary</h1>
@@ -38,7 +37,6 @@ const Salary = () => {
         </>
       ) : (
         <Table>
-
           <TableHeader>
             <TableRow>
               <TableHead>Name</TableHead>

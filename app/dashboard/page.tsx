@@ -25,9 +25,8 @@ const Dashboard = () => {
         setData(response.data.chartData);
         setTotals(response.data.totals);
         setLoading(false);
-        console.log(response.data);
       } catch (error) {
-        console.log(error);
+        throw new Error(error as string);
       }
     };
     getData();
@@ -96,31 +95,33 @@ const Dashboard = () => {
           <div className="mt-4 xl:w-1/2">
             <Card>
               <CardHeader className="flex">
-                <h2 className='font-bold py-0 my-0'>Recent salaries</h2>
-                <p className="text-sm py-0 my-0">You made 300 recent salaries transactions</p>
+                <h2 className="font-bold py-0 my-0">Recent salaries</h2>
+                <p className="text-sm py-0 my-0">
+                  You made 300 recent salaries transactions
+                </p>
               </CardHeader>
               <CardContent>
-                <div className='flex justify-between items-center'>
+                <div className="flex justify-between items-center">
                   <div>
-                    <h2 className='text-sm font-semibold'>Rukundo Aime</h2>
+                    <h2 className="text-sm font-semibold">Rukundo Aime</h2>
                     <p className="text-sm">rukundoaime89@gmail.com</p>
                   </div>
                   <p className="text-xl font-bold block">$12000</p>
                 </div>
               </CardContent>
               <CardContent>
-                <div className='flex justify-between items-center'>
+                <div className="flex justify-between items-center">
                   <div>
-                    <h2 className='text-sm font-semibold'>Rukundo Aime</h2>
+                    <h2 className="text-sm font-semibold">Rukundo Aime</h2>
                     <p className="text-sm">rukundoaime89@gmail.com</p>
                   </div>
                   <p className="text-xl font-bold block">$12000</p>
                 </div>
               </CardContent>
               <CardContent>
-                <div className='flex justify-between items-center'>
+                <div className="flex justify-between items-center">
                   <div>
-                    <h2 className='text-sm font-semibold'>Rukundo Aime</h2>
+                    <h2 className="text-sm font-semibold">Rukundo Aime</h2>
                     <p className="text-sm">rukundoaime89@gmail.com</p>
                   </div>
                   <p className="text-xl font-bold block">$12000</p>

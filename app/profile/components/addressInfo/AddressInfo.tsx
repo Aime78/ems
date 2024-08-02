@@ -56,11 +56,9 @@ const AddressInfo = () => {
       const newUser = { ...user, address: { ...user.address, ...updateInfo } };
       setUser(newUser);
     } catch (error) {
-      console.log(error);
       setIsSubmitting(false);
       setEditInfo(false);
     }
-    console.log(values);
   };
 
   // 1. Define your address information form.

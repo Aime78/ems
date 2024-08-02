@@ -22,3 +22,4 @@ export const getDataFromToken = (request: Request) => {
     throw new Error(error.message);
   }
 };
+

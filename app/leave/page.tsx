@@ -16,7 +16,7 @@ import { getTime } from '@/lib/getTime';
 import { ILeave } from '@/types/leave.interface';
 
 const Leave = () => {
-    const [leave, setLeave] = useState<Partial<ILeave>[]>([]);
+  const [leave, setLeave] = useState<Partial<ILeave>[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -25,9 +25,8 @@ const Leave = () => {
         const response = await axios.get('/api/leave');
         setLeave(response.data.data);
         setLoading(false);
-        console.log(response.data.data);
       } catch (error) {
-        console.log(error);
+        throw new Error(error as string);
       }
     };
     getLeave();
@@ -58,24 +57,19 @@ const Leave = () => {
               <TableRow key={leave?._id}>
                 <></>
                 <TableCell>{`${leave?.user?.firstName} ${leave?.user?.lastName}`}</TableCell>
-                <TableCell>{leave?.startDate || '-' }</TableCell>
-                <TableCell>
-                  
-                  {leave?.endDate || '-' }
-                </TableCell>{' '}
-                <TableCell>
-                 {getTime(leave?.requestedAt) }
-                </TableCell>
+                <TableCell>{leave?.startDate || '-'}</TableCell>
+                <TableCell>{leave?.endDate || '-'}</TableCell>{' '}
+                <TableCell>{getTime(leave?.requestedAt)}</TableCell>
                 <TableCell>{leave?.status}</TableCell>
                 <TableCell>{leave?.reason}</TableCell>
-                <TableCell>{leave?.approvedBy as string || "-"}</TableCell>
+                <TableCell>{(leave?.approvedBy as string) || '-'}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       )}
     </>
-  )
-}
+  );
+};
 
-export default Leave
+export default Leave;

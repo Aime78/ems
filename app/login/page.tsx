@@ -36,19 +36,15 @@ const Login = () => {
   async function onSubmit(values: z.infer<typeof signInSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    // console.log(values);
+
     setIsSubmitting(true);
     try {
-  
-      // const result = await login(values);
-      // console.log(result)
       const response = await axios.post('/api/login', values);
       const { data } = response;
       setIsSubmitting(false);
       router.push('/dashboard');
     } catch (error: any) {
       setIsSubmitting(false);
-      console.log('login failed', error.message);
     } finally {
       setIsSubmitting(false);
     }

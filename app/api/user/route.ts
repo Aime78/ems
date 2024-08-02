@@ -3,12 +3,14 @@ import { getDataFromToken } from '@/lib/getDataFromToken';
 import { User } from '@/model/user.model';
 
 export async function GET(request: Request) {
-  const userDecoded = getDataFromToken(request);
+  const params = new URLSearchParams(request.url.split('?')[1]);
+  const userId = params.get('id');
+
 
   // Find the user by their ID in the database
   await dbConnect();
   try {
-    const userDoc = await User.findOne({ _id: userDecoded?.id });
+    const userDoc = await User.findOne({ _id: userId});
     const user = userDoc?.toObject();
 
     const response = Response.json({
