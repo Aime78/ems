@@ -12,13 +12,13 @@ import {
 import axios from 'axios';
 import { Skeleton } from '@/components/ui/skeleton';
 import { IAttendance } from '@/types/attendance.interface';
-import { getTime } from '@/lib/getTime';
+import { formatDate, getTime } from '@/lib/getTime';
 const Attendance = () => {
   const [attendance, setAttendance] = useState<Partial<IAttendance>[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    document.title = 'Attendance'
+    document.title = 'Attendance';
     const getAttendance = async () => {
       try {
         const response = await axios.get('/api/attendance');
@@ -47,19 +47,18 @@ const Attendance = () => {
               <TableHead>Date</TableHead>
               <TableHead>Clock In</TableHead>
               <TableHead>Clock Out</TableHead>
-              <TableHead>Daily Hours</TableHead>
-              <TableHead>Weekly Hours</TableHead>
-              <TableHead>Overtime Hours</TableHead>
+              <TableHead>Daily</TableHead>
+              <TableHead>Weekly</TableHead>
+              <TableHead>Overtime</TableHead>
               <TableHead>Status</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {attendance.map((attendance) => (
               <TableRow key={attendance?._id}>
-                <></>
                 <TableCell>{`${attendance?.user?.firstName} ${attendance?.user?.lastName}`}</TableCell>
-                <TableCell>{getTime(attendance?.date)}</TableCell>
-                <TableCell>{getTime(attendance?.clockIn)}</TableCell>{' '}
+                <TableCell>{formatDate(attendance?.date)}</TableCell>
+                <TableCell>{getTime(attendance?.clockIn)}</TableCell>
                 <TableCell>{getTime(attendance?.clockOut)}</TableCell>
                 <TableCell>{attendance?.dailyHoursWorked}</TableCell>
                 <TableCell>{attendance?.weeklyHoursWorked}</TableCell>

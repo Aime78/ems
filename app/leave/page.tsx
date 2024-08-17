@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState } from 'react';
-import AppLayout from '../AppLayout';
 import {
   Table,
   TableBody,
@@ -11,8 +10,7 @@ import {
 } from '@/components/ui/table';
 import axios from 'axios';
 import { Skeleton } from '@/components/ui/skeleton';
-import { IAttendance } from '@/types/attendance.interface';
-import { getTime } from '@/lib/getTime';
+import { formatDate, getTime } from '@/lib/getTime';
 import { ILeave } from '@/types/leave.interface';
 
 const Leave = () => {
@@ -58,8 +56,8 @@ const Leave = () => {
               <TableRow key={leave?._id}>
                 <></>
                 <TableCell>{`${leave?.user?.firstName} ${leave?.user?.lastName}`}</TableCell>
-                <TableCell>{leave?.startDate || '-'}</TableCell>
-                <TableCell>{leave?.endDate || '-'}</TableCell>{' '}
+                <TableCell>{formatDate(leave?.startDate) || '-'}</TableCell>
+                <TableCell>{formatDate(leave?.endDate) || '-'}</TableCell>{' '}
                 <TableCell>{getTime(leave?.requestedAt)}</TableCell>
                 <TableCell>{leave?.status}</TableCell>
                 <TableCell>{leave?.reason}</TableCell>

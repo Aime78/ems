@@ -33,9 +33,9 @@ const Goals = () => {
           <Skeleton className="w-1/3 h-[200px]" />
         </div>
       ) : (
-        <div className="flex gap-4">
+        <div className="grid grid-cols-3 gap-4">
           {goals?.map((goal: IGoal) => (
-            <Card key={goal._id} className="w-1/3">
+            <Card key={goal._id} >
               <CardHeader className="font-semibold">{goal.title}</CardHeader>
               <CardContent>{goal.description}</CardContent>
             </Card>

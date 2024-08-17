@@ -17,6 +17,7 @@ export async function POST(request: Request) {
       description: description,
     });
     await goal.save();
+
     return Response.json({
       data: goal,
       success: true,
@@ -30,7 +31,10 @@ export async function POST(request: Request) {
 export async function GET(request: Request) {
   await dbConnect();
   try {
-    const goalDoc = await Goal.find({}).populate('createdBy', 'firstName lastName');
+    const goalDoc = await Goal.find({}).populate(
+      'createdBy',
+      'firstName lastName'
+    );
     return Response.json({
       data: goalDoc,
       success: true,

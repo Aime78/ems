@@ -17,12 +17,12 @@ export async function POST(request: Request) {
       salary: salary,
       bonus: bonus,
       deductions: deductions,
-      netPay: salary - (deductions || 0) - (bonus || 0),
+      netPay: salary - (deductions || 0) + (bonus || 0),
       generatedAt: new Date(),
     });
     await salaryObj.save();
     return Response.json({
-      data: salary,
+      data: salaryObj,
       success: true,
       status: 200,
     });

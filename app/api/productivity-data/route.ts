@@ -1,36 +1,36 @@
 export async function GET() {
   const chartData = [
-    { month: 'January', hoursWorked: 186, hoursNotWorked: 80 },
-    { month: 'February', hoursWorked: 305, hoursNotWorked: 200 },
-    { month: 'March', hoursWorked: 237, hoursNotWorked: 120 },
-    { month: 'April', hoursWorked: 73, hoursNotWorked: 190 },
-    { month: 'May', hoursWorked: 209, hoursNotWorked: 130 },
-    { month: 'June', hoursWorked: 214, hoursNotWorked: 140 },
+    { month: 'January', hoursWorked: 4800, hoursNotWorked: 1600 },
+    { month: 'February', hoursWorked: 5600, hoursNotWorked: 3000 },
+    { month: 'March', hoursWorked: 3370, hoursNotWorked: 3000 },
+    { month: 'April', hoursWorked: 4800, hoursNotWorked: 1600 },
+    { month: 'May', hoursWorked: 5600, hoursNotWorked: 3000  },
+    { month: 'June', hoursWorked: 5600, hoursNotWorked: 3000 },
   ];
 
   const totals = [
     {
       _id: 'total-salaries',
       title: 'Total Salaries',
-      number: '$12000',
+      number: '€108000',
       comment: '+20.1% from last month',
     },
     {
       _id: 'total-employees',
       title: 'Total employees',
-      number: '300',
+      number: '32',
       comment: '+5.1% from last month',
     },
     {
       _id: 'total-employees-present',
       title: 'Employees present',
-      number: '180',
+      number: '21',
       comment: '+12.0% from last month',
     },
     {
       _id: 'total-employees-absent',
       title: 'Employees absent',
-      number: '120',
+      number: '12',
       comment: '+14.5% from last month',
     },
   ];

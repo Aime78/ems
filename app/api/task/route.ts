@@ -21,7 +21,8 @@ export async function POST(request: Request) {
       assignedTo: assignedTo || null,
       createdAt: new Date(),
     });
-      await task.save();
+    await task.save();
+
     return Response.json({
       data: task,
       success: true,
@@ -33,16 +34,18 @@ export async function POST(request: Request) {
 }
 
 export async function GET(request: Request) {
+  await dbConnect();
+  try {
+    const taskDoc = await Task.find({})
+      .populate('createdBy', 'firstName lastName')
+      .populate('assignedTo', 'firstName lastName');
 
-    await dbConnect();
-    try {
-      const taskDoc = await Task.find({}).populate('createdBy', 'firstName lastName');
-      return Response.json({
-        data: taskDoc,
-        success: true,
-        status: 200,
-      })
-    } catch (error) {
-      throw new Error('Task not found');
-    }
+    return Response.json({
+      data: taskDoc,
+      success: true,
+      status: 200,
+    });
+  } catch (error) {
+    throw new Error('Task not found');
   }
+}

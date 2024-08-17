@@ -53,12 +53,12 @@ const Salary = () => {
             {salaries.map((salary: ISalary) => (
               <TableRow key={salary?._id}>
                 <TableCell>{`${salary?.user?.firstName} ${salary?.user?.lastName}`}</TableCell>
-                <TableCell>{salary?.salary}</TableCell>
+                <TableCell>&euro;{salary?.salary}</TableCell>
                 <TableCell>{salary?.payPeriodStart}</TableCell>
                 <TableCell>{salary?.payPeriodEnd}</TableCell>
-                <TableCell>{salary?.bonus}</TableCell>
-                <TableCell>{salary?.netPay}</TableCell>
-                <TableCell>{salary?.deductions}</TableCell>
+                <TableCell>&euro;{salary?.bonus}</TableCell>
+                <TableCell>&euro;{salary?.netPay}</TableCell>
+                <TableCell>&euro;{salary?.deductions}</TableCell>
               </TableRow>
             ))}
           </TableBody>

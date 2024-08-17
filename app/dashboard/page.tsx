@@ -98,34 +98,34 @@ const Dashboard = () => {
               <CardHeader className="flex">
                 <h2 className="font-bold py-0 my-0">Recent salaries</h2>
                 <p className="text-sm py-0 my-0">
-                  You made 300 recent salaries transactions
+                  You made 32 recent salaries transactions
                 </p>
               </CardHeader>
               <CardContent>
                 <div className="flex justify-between items-center">
                   <div>
-                    <h2 className="text-sm font-semibold">Rukundo Aime</h2>
-                    <p className="text-sm">rukundoaime89@gmail.com</p>
+                    <h2 className="text-sm font-semibold">Roberto Marchetti</h2>
+                    <p className="text-sm">robertomarchetti@gmail.com</p>
                   </div>
-                  <p className="text-xl font-bold block">$12000</p>
+                  <p className="text-xl font-bold block">&euro;3250</p>
                 </div>
               </CardContent>
               <CardContent>
                 <div className="flex justify-between items-center">
                   <div>
-                    <h2 className="text-sm font-semibold">Rukundo Aime</h2>
-                    <p className="text-sm">rukundoaime89@gmail.com</p>
+                    <h2 className="text-sm font-semibold">Giovanni Moretti</h2>
+                    <p className="text-sm">giovannimoretti@gmail.com</p>
                   </div>
-                  <p className="text-xl font-bold block">$12000</p>
+                  <p className="text-xl font-bold block">&euro;6600</p>
                 </div>
               </CardContent>
               <CardContent>
                 <div className="flex justify-between items-center">
                   <div>
-                    <h2 className="text-sm font-semibold">Rukundo Aime</h2>
-                    <p className="text-sm">rukundoaime89@gmail.com</p>
+                    <h2 className="text-sm font-semibold">Emily Davis</h2>
+                    <p className="text-sm">emilydavis@gmail.com</p>
                   </div>
-                  <p className="text-xl font-bold block">$12000</p>
+                  <p className="text-xl font-bold block">&euro;6000</p>
                 </div>
               </CardContent>
             </Card>

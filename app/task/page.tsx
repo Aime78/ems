@@ -47,7 +47,7 @@ const Task = () => {
               <TableHead>Description</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Priority</TableHead>
-              <TableHead>Assigned to</TableHead>
+              <TableHead>Assigned</TableHead>
               <TableHead>Created by</TableHead>
               <TableHead>Created at</TableHead>
             </TableRow>
@@ -55,10 +55,10 @@ const Task = () => {
           <TableBody>
             {tasks.map((task: ITask) => (
               <TableRow key={task?._id}>
-                <TableCell className="max-w-[300px] truncate">
+                <TableCell className="max-w-[150px] truncate">
                   {task?.title}
                 </TableCell>
-                <TableCell className="max-w-[100px] truncate">
+                <TableCell className="max-w-[150px] truncate">
                   {task?.description}
                 </TableCell>
                 <TableCell>{task?.status}</TableCell>
