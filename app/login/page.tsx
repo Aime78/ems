@@ -17,11 +17,16 @@ import {
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 import { signInSchema } from '@/lib/schemaValidations';
-import { Loader2 } from 'lucide-react';
+import { EyeIcon, EyeOff, Loader2 } from 'lucide-react';
 
 const Login = () => {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   useEffect(() => {
     document.title = 'Login';
@@ -82,7 +87,23 @@ const Login = () => {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input placeholder="password" {...field} />
+                      <div className="relative">
+                        <Input
+                          type={showPassword ? 'text' : 'password'}
+                          placeholder="password"
+                          {...field}
+                        />
+                        <span
+                          className="absolute right-2 top-1/2 -translate-y-1/2"
+                          onClick={toggleShowPassword}
+                        >
+                          {showPassword ? (
+                            <EyeOff className="h-4 w-4 cursor-pointer" />
+                          ) : (
+                            <EyeIcon className="h-4 w-4 cursor-pointer" />
+                          )}
+                        </span>
+                      </div>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
