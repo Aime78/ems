@@ -42,9 +42,6 @@ const Login = () => {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof signInSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-
     setIsSubmitting(true);
     try {
       const response = await axios.post('/api/login', values);
