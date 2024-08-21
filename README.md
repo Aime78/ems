@@ -56,3 +56,11 @@ Contributions are welcome! Please follow these steps to contribute:
 3. Commit your changes (`git commit -m 'Add new feature'`).
 4. Push to the branch (`git push origin feature-name`).
 5. Create a Pull Request.
+
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
+> Next.js authentication can be improved with a third party library.
+
+> [!TIP]
+> Helpful advice for doing things better or more easily.
+> Keep using shadcn to speed up the development process.
