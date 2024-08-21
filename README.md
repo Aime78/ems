@@ -46,8 +46,8 @@ To configure the application, you may need to set up the following environment v
 - `MONGODB_URI`: The URL to mongoDB connection
 - `SMTP_PASSWORD`: The password used for SMTP
 - `SMTP_EMAIL`: The email used for SMTP
--`TOKEN_SECRET`: The token used to generate JWT
--`HOST`: The port of the server
+- `TOKEN_SECRET`: The token used to generate JWT
+- `HOST`: The port of the server
 
 ## Contributing
 Contributions are welcome! Please follow these steps to contribute:
