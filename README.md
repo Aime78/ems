@@ -15,7 +15,7 @@ Check out the live demo of the EMS [here](https://ems-five-pi.vercel.app/)
 
 ## Technologies used
 - Next.js
-- MongDB
+- MongoDB
 - JSON Web Tokens (JWT)
 - Vercel
 
