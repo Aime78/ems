@@ -5,6 +5,9 @@ The Employee Management System (EMS) is a comprehensive application designed to 
 ## Demo
 Check out the live demo of the EMS [here](https://ems-five-pi.vercel.app/)
 
+Check out the youtube video here 
+[EMS](https://youtu.be/9VvWIUv3diw)
+
 ## Key Features
 - Employee Information Management: Create, update, and view employee profiles with personal and job-related details.
 - Attendance and Leave Tracking: Track daily attendance and work hours, manage leave requests, including approval and tracking of various leave types.
